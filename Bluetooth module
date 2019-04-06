@@ -1,4 +1,5 @@
 #include <Servo.h>
+char cache;
 Servo myservo;  
 int dis = 20;  
 const int trigPin = 5;
@@ -6,17 +7,20 @@ const int echoPin = 6;
 int const trigPin1 = 10;
 int const echoPin1 = 9;
 int const buzzPin = 2;
+const int ledPin = 13;
+
 long duration;
 float distance;
 long duration1;
 float distance1;
+String inputString="";
 void setup() 
 {
    Serial.begin (9600);
    
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT); 
-  
+  pinMode(ledPin, OUTPUT);
   pinMode(trigPin1, OUTPUT);
   pinMode(echoPin1, INPUT); 
   
@@ -57,23 +61,53 @@ void secondsensor()
   digitalWrite(trigPin1, HIGH);
   delayMicroseconds(10);
   
-duration = pulseIn(echoPin, HIGH);
-distance = (duration/2) / 29.1;
+duration1 = pulseIn(echoPin1, HIGH);
+ distance1 = 0.034*(duration1/2);
 
-if (distance1 <= 50 && distance1 >= 0) {
+if (distance1 <= 30 && distance1 >= 0) {
 // Buzz
 digitalWrite(buzzPin, HIGH);
+digitalWrite(ledPin, HIGH);
 } else {
 // Don't buzz
 digitalWrite(buzzPin, LOW);
+digitalWrite(ledPin, LOW);
 }
 // Waiting 60 ms won't hurt any one
 delay(60);
+}
+
+void blue()
+{
+  Serial.println("\n");
+  if(Serial.available()  )
+{
+ 
+    while(Serial.available())
+{
+char inChar = (char)Serial.read();
+inputString += inChar;
+}
+Serial.println(inputString);
+while (Serial.available()>0)
+{
+cache = Serial.read();
+}
+if(inputString == "b" )
+{
+digitalWrite(ledPin,LOW);
+digitalWrite(buzzPin, LOW);
+}
+
+delay(100);
+inputString = "";
+}
+delay(100);
 }
 
 void loop() {
 Serial.println("\n");
 firstsensor();
 secondsensor();
-delay(100);
+blue();
 }
