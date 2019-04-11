@@ -28,6 +28,7 @@ The main purpose of this project is to build a Smart Bin where it does some func
 * A buzzer rings when the bin is full.
 * Using the Bluetooth module a signal is sent to the Arduino from the smartphone to stop the buzzer.
 * Alert notifications are sent to the mobile using Photon particle and IFTT App.
+
 **Team Roles:**
 All the roles like Gathering the components, Building the Hardware, Programming, Documentations are done by me.
 
