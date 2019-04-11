@@ -1,6 +1,9 @@
 #include <Servo.h>
 char cache;
 Servo myservo;  
+#include <SoftwareSerial.h>
+
+SoftwareSerial BTserial(3, 4);
 int dis = 20; 
 const int trigPin = 5;
 const int echoPin = 6;
@@ -59,10 +62,12 @@ void secondsensor()
 duration1 = pulseIn(echoPin1, HIGH);
  distance1 = 0.034*(duration1/2);
 
-if (distance1 <= 30 && distance1 >= 0) {
+if (distance1 <= 10 && distance1 >= 0) {
 // Buzz
+
 digitalWrite(buzzPin, HIGH);
 digitalWrite(ledPin, HIGH);
+
 } else {
 // Don't buzz
 digitalWrite(buzzPin, LOW);
@@ -70,6 +75,7 @@ digitalWrite(ledPin, LOW);
 }
 // Waiting 60 ms won't hurt any one
 delay(60);
+
 }
 void blue()
 {
@@ -86,8 +92,6 @@ while (Serial.available()>0)
 cache = Serial.read();
 }
 
-while (millis()>100)
-{
 if(inputString == "a")
 {
 //digitalWrite(13,HIGH);
@@ -98,15 +102,19 @@ else if(inputString == "b")
 {
 //digitalWrite(13,LOW);
 digitalWrite(buzzPin, LOW);
-
+delay(10000000);
 }
+delay(10000);
 inputString = "";
+delay(100000000);
 }
+//delay(100000000);
 }
-}
+
 void loop() {
 Serial.println("\n");
 firstsensor();
 secondsensor();
 blue();
+
 }
