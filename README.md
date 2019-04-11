@@ -13,4 +13,4 @@ Components used:
 •	Particle Photon
 
 Objective:
-The main purpose of this project is to build a Smart Bin where it does some functionalities like when it detects the object it automatically opens the lid of the project, also a notification is sent to the bin user mobile when the bin is full. A buzzer also rings and this buzzer is controlled using mobile phone 
+The main purpose of this project is to build a Smart Bin where it does some functionalities like when it detects the object it automatically opens the lid of the project, also a notification is sent to the bin user mobile when the bin is full. A buzzer also rings and this buzzer is controlled using mobile phone apart from this the user is also notifies with garbage pick up dates.
