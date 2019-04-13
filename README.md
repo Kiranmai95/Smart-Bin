@@ -11,6 +11,7 @@ It is an Interactive Hardware project. The goal of the project is to create a sm
 7.  Smart phone
 8.	Bluetooth Module
 9.	Particle Photon
+10. LCD
 
 **Objective:**
 The main purpose of this project is to build a Smart Bin where it does some functionalities like when it detects the object it automatically opens the lid of the project, also a notification is sent to the bin user mobile when the bin is full. A buzzer also rings and this buzzer is controlled using mobile phone apart from this the user is also notified with garbage pick-up days.
